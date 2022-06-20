@@ -7,5 +7,6 @@ class Constantes {
      const val valorPorDefecto=100
 
 
+
     }
 }
