@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -36,6 +38,7 @@ dependencies {
     def versionRetrofit='2.9.0'
     //https://developer.android.com/jetpack/androidx/releases/recyclerview#recyclerview-1.2.1
     def versionRecyclerView='1.2.1'
+    def versionHilt = '2.40.2'
 
 
 
@@ -48,8 +51,13 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$versionRetrofit"
     implementation "com.squareup.retrofit2:converter-gson:$versionRetrofit"
 
+
     //RecyclerView
     implementation "androidx.recyclerview:recyclerview:$versionRecyclerView"
+
+    //Hilt
+    implementation "com.google.dagger:hilt-android:$versionHilt"
+    kapt "com.google.dagger:hilt-android-compiler:$versionHilt"
 
 
     testImplementation 'junit:junit:4.13.2'
