@@ -1,18 +1,25 @@
 package montes.luis.mireddit.ui.actividades
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
 
 import androidx.activity.viewModels
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import montes.luis.mireddit.R
 import montes.luis.mireddit.app.Aplicacion
 
 import montes.luis.mireddit.databinding.ActivityMainBinding
 import montes.luis.mireddit.modelo.DatosFiltroChildren
+import montes.luis.mireddit.permisos.PermisosAplicacion
 import montes.luis.mireddit.ui.adapters.MemeAdaptador
 import montes.luis.mireddit.utilidades.Constantes
 import montes.luis.mireddit.viewmodels.MemesViewModel
@@ -25,12 +32,20 @@ class PrincipalActivity : AppCompatActivity() {
     private lateinit var adaptador: MemeAdaptador
     private var listaResultados:ArrayList<DatosFiltroChildren> = arrayListOf()
     private var listaFiltrada100:MutableList<DatosFiltroChildren> = arrayListOf()
+    private lateinit var permisoAplicacion:PermisosAplicacion
+    private lateinit var contexto: Context
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         (application as Aplicacion).appComponent.inject(memesViewModel)
+        contexto=this
+        permisoAplicacion= PermisosAplicacion(contexto, this)
+
+        if(!permisoAplicacion.verificarPermisoEscritura())
+            permisoAplicacion.solicitarPermisoEscritura(Constantes.PERMISO_ESCRITURA)
 
         setContentView(binding.root)
         inicializarRecyclerView()
@@ -109,6 +124,23 @@ class PrincipalActivity : AppCompatActivity() {
         )
 
 
+    }
+
+
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            Constantes.PERMISO_ESCRITURA -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, getString(R.string.permiso_escritura_otorgado), Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, getString(R.string.permiso_escritura_denegado), Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
 

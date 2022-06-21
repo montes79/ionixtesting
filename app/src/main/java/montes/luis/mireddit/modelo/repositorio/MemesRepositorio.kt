@@ -1,6 +1,6 @@
 package montes.luis.mireddit.modelo.repositorio
 
-import montes.luis.mireddit.modelo.MemesProveedor
+import montes.luis.mireddit.modelo.proveedor.MemesProveedor
 import montes.luis.mireddit.modelo.RespuestaReddit
 import retrofit2.Response
 import montes.luis.mireddit.servicios.MemeServicio
@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class MemesRepositorio @Inject constructor(
     private val api: MemeServicio,
-    private val proveedor:MemesProveedor
+    private val proveedor: MemesProveedor
 ){
 
     suspend fun getListado100(numeroFiltro:Int): Response<RespuestaReddit> {

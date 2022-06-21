@@ -1,5 +1,6 @@
-package montes.luis.mireddit.modelo
+package montes.luis.mireddit.modelo.proveedor
 
+import montes.luis.mireddit.modelo.DatosChildren
 import javax.inject.Inject
 import javax.inject.Singleton
 

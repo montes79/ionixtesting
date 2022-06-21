@@ -8,6 +8,7 @@ class Constantes {
 
         const val filtro_link_flair_text = "Shitposting"
         const val filtro_post_hint = "image"
+        const val PERMISO_ESCRITURA = 1000
     }
 
 }
