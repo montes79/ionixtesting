@@ -1,4 +1,4 @@
-package montes.luis.mireddit.datos
+package montes.luis.mireddit.modelo
 
 import com.google.gson.annotations.SerializedName
 

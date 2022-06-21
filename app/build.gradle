@@ -44,6 +44,8 @@ dependencies {
     def versionRecyclerView='1.2.1'
     def versionHilt = '2.40.2'
     def versionGlide='4.13.0'
+    def versionViewModelLiveData='2.4.1'
+    def versionCorutinas='1.5.2'
 
 
 
@@ -69,6 +71,16 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$versionGlide"
 
     //RecyclerView
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versionViewModelLiveData"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versionViewModelLiveData"
+
+    //Corrutinas
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versionCorutinas"
+
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

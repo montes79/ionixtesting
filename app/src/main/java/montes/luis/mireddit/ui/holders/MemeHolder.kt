@@ -1,12 +1,11 @@
 package montes.luis.mireddit.ui.holders
 
 import android.view.View
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import montes.luis.mireddit.R
 import montes.luis.mireddit.databinding.ItemMemeRedditBinding
-import montes.luis.mireddit.datos.DatosFiltroChildren
+import montes.luis.mireddit.modelo.DatosFiltroChildren
 
 class MemeHolder(private val vista: View) : RecyclerView.ViewHolder(vista) {
 

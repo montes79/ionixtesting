@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import montes.luis.mireddit.R
-import montes.luis.mireddit.datos.DatosFiltroChildren
+import montes.luis.mireddit.modelo.DatosFiltroChildren
 import montes.luis.mireddit.ui.holders.MemeHolder
 
 class MemeAdaptador(
