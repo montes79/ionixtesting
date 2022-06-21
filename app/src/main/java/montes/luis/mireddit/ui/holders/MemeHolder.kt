@@ -4,23 +4,22 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import montes.luis.mireddit.R
 import montes.luis.mireddit.databinding.ItemMemeRedditBinding
 import montes.luis.mireddit.datos.DatosFiltroChildren
 
 class MemeHolder(private val vista: View) : RecyclerView.ViewHolder(vista) {
 
-    val binding = ItemMemeRedditBinding.bind(vista)
+    private val binding = ItemMemeRedditBinding.bind(vista)
 
-
-    fun dibujar(heroe: DatosFiltroChildren, onClickFuncion: (DatosFiltroChildren) -> Unit) {
-      //  binding.tvSuperhero.text = heroe.nombre
-      //  binding.tvRealName.text = heroe.nombreReal
-      //  binding.tvPublisher.text = heroe.editorial
-
-      //  Glide.with(binding.tvSuperhero.context).load(heroe.urlFoto).into(binding.ivAvatar)
+    fun dibujar(ElMeme: DatosFiltroChildren, onClickFuncion: (DatosFiltroChildren) -> Unit) {
+        binding.tvTitulo.text=ElMeme.titulo
+        binding.tvPuntaje.text=itemView.context.getString(R.string.valor_votacion,ElMeme.puntaje.toString())
+        binding.tvComentarios.text=itemView.context.getString(R.string.valor_comentarios,ElMeme.numeroComentarios.toString())
+       Glide.with(binding.imagenMeme.context).load(ElMeme.urlImagen).into(binding.imagenMeme)
 
         itemView.setOnClickListener {
-            onClickFuncion(heroe)
+            onClickFuncion(ElMeme)
         }
 
     }

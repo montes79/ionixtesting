@@ -12,6 +12,8 @@
     <dimen name="F3">20sp</dimen>
     <dimen name="F4">25sp</dimen>
 
+    <dimen name="dimImagen">100dp</dimen>
+
 
 
 </resources>

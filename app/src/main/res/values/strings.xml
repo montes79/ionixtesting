@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">MemeDit</string>
+    <string name="app_name">MemeIonixReddit</string>
     <string name="contenido_imagen">Descripcion del contenido</string>
     <string name="hint_titulo">Las empresas se fugan de Santiago Centro - La Tercera</string>
+    <string name="texto_titulo">Titulo del meme</string>
 
     <string name="hint_votacion">Puntaje: 100000</string>
     <string name="hint_comentarios">Comentarios: 100000</string>
