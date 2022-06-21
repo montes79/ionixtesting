@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">mireddit</string>
+    <string name="app_name">MemeDit</string>
+    <string name="contenido_imagen">Descripcion del contenido</string>
+    <string name="hint_titulo">Las empresas se fugan de Santiago Centro - La Tercera</string>
+
+    <string name="hint_votacion">Puntaje: 100000</string>
+    <string name="hint_comentarios">Comentarios: 100000</string>
+
+    <string name="valor_votacion">Puntaje: %s</string>
+    <string name="valor_comentarios">Comentarios: %s</string>
 </resources>

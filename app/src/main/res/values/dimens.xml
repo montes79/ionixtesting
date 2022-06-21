@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="M1">5dp</dimen>
+    <dimen name="M2">10dp</dimen>
+    <dimen name="M3">15dp</dimen>
+    <dimen name="M4">20dp</dimen>
+
+
+    <dimen name="F1">10sp</dimen>
+    <dimen name="F2">15sp</dimen>
+    <dimen name="F3">20sp</dimen>
+    <dimen name="F4">25sp</dimen>
+
+
+
+</resources>

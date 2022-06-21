@@ -31,6 +31,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -39,6 +43,7 @@ dependencies {
     //https://developer.android.com/jetpack/androidx/releases/recyclerview#recyclerview-1.2.1
     def versionRecyclerView='1.2.1'
     def versionHilt = '2.40.2'
+    def versionGlide='4.13.0'
 
 
 
@@ -59,6 +64,11 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$versionHilt"
     kapt "com.google.dagger:hilt-android-compiler:$versionHilt"
 
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$versionGlide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$versionGlide"
+
+    //RecyclerView
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
