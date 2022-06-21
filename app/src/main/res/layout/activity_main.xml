@@ -9,6 +9,14 @@
     android:background="@color/material_dynamic_neutral95"
     tools:context=".ui.actividades.PrincipalActivity">
 
+    <ProgressBar
+        android:id="@+id/barraProgreso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+     />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMemesReddit"
         android:layout_width="match_parent"

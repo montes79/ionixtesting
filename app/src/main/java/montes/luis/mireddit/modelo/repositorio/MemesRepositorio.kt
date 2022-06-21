@@ -2,19 +2,27 @@ package montes.luis.mireddit.modelo.repositorio
 
 import montes.luis.mireddit.modelo.MemesProveedor
 import montes.luis.mireddit.modelo.RespuestaReddit
-import montes.luis.mireddit.servicios.servicioReddit
 import retrofit2.Response
+import montes.luis.mireddit.servicios.MemeServicio
 import javax.inject.Inject
 
 class MemesRepositorio @Inject constructor(
-    private val api:servicioReddit,
+    private val api: MemeServicio,
     private val proveedor:MemesProveedor
 ){
 
-    //DatosFiltroChildren RespuestaReddit
     suspend fun getListado100(numeroFiltro:Int): Response<RespuestaReddit> {
-        val respuesta=api.getListado100Resultados(numeroFiltro)
-        proveedor.listaMemes= respuesta.body()?.datos?.hijos?: mutableListOf()
+        val respuesta=api.getListadoMemesFiltro100(numeroFiltro)
+        proveedor.listaMemes= respuesta.body()?.datos?.hijos ?: mutableListOf()
         return respuesta
     }
+
+    suspend fun getListadoBusqueda(cadenaBusqueda:String, numeroFiltro:Int): Response<RespuestaReddit> {
+        val respuesta=api.getListadoMemesBusqueda(cadenaBusqueda,numeroFiltro)
+        proveedor.listaMemes= respuesta.body()?.datos?.hijos ?: mutableListOf()
+        return respuesta
+    }
+
+
+
 }

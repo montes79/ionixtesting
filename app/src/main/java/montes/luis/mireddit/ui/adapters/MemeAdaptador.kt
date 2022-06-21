@@ -8,7 +8,7 @@ import montes.luis.mireddit.modelo.DatosFiltroChildren
 import montes.luis.mireddit.ui.holders.MemeHolder
 
 class MemeAdaptador(
-    private val listaMemes: List<DatosFiltroChildren>,
+    val listaMemes: ArrayList<DatosFiltroChildren>,
     private val onClickFuncion: (DatosFiltroChildren) -> Unit  //Lambda function
 ) : RecyclerView.Adapter<MemeHolder>() {
 

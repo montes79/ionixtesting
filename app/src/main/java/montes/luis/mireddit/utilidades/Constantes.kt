@@ -6,7 +6,15 @@ class Constantes {
      const val urlBase="https://www.reddit.com/r/chile/"
      const val limiteBusqueda=100
 
+     const val filtro_link_flair_text="Shitposting"
+     const val filtro_post_hint="image"
 
+
+        /*
+             @SerializedName("link_flair_text") //==>Shitposting
+        val categoria1:String="",
+        @SerializedName("post_hint") // ==> image
+             */
 
     }
 }

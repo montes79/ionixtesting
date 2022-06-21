@@ -1,19 +1,29 @@
 package montes.luis.mireddit.ui.actividades
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
+
+import androidx.activity.viewModels
+import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
+
 import montes.luis.mireddit.databinding.ActivityMainBinding
 import montes.luis.mireddit.modelo.DatosFiltroChildren
 import montes.luis.mireddit.ui.adapters.MemeAdaptador
+import montes.luis.mireddit.utilidades.Constantes
+import montes.luis.mireddit.viewmodels.MemesViewModel
 
 @AndroidEntryPoint
 class PrincipalActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val memesViewModel: MemesViewModel by viewModels()
     private lateinit var adaptador: MemeAdaptador
-    private var listaResultados:MutableList<DatosFiltroChildren> = mutableListOf()
+    private var listaResultados:ArrayList<DatosFiltroChildren> = arrayListOf()
+    private var listaFiltrada100:MutableList<DatosFiltroChildren> = mutableListOf()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +31,39 @@ class PrincipalActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         inicializarRecyclerView()
+        llamadaRecuperar100Registros()
     }
 
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun actualizarRecyclerView100Elementos(){
+        adaptador.listaMemes.clear()
+        adaptador.listaMemes.addAll(listaFiltrada100)
+        adaptador.notifyDataSetChanged()
+    }
+
+
+    private fun llamadaRecuperar100Registros(){
+
+        memesViewModel.onInicializar(Constantes.limiteBusqueda)
+
+        memesViewModel.listaMemes.observe(this, Observer {
+            respuesta->
+            val listaFiltrada=respuesta.body()?.datos?.hijos?.filter { it.categoria1==Constantes.filtro_link_flair_text && it.categoria2==Constantes.filtro_post_hint }
+
+            listaFiltrada100= listaFiltrada?.toMutableList() ?: mutableListOf()
+            actualizarRecyclerView100Elementos( )
+
+        })
+
+        memesViewModel.isLoading.observe(this, Observer {
+            isVisible->
+            binding.barraProgreso.isVisible=isVisible
+        })
+
+
+
+    }
 
     private fun inicializarRecyclerView(){
         crearListaDummy()
