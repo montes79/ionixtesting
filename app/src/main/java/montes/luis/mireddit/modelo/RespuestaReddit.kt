@@ -13,14 +13,24 @@ data class RespuestaReddit(
 
 data class Datos(
     @SerializedName("children")
-    val hijos:ArrayList<DatosFiltroChildren> = ArrayList()
+    val datosHijos:ArrayList<DatosChildren> = ArrayList()
 )
 
+data class DatosChildren(
+    @SerializedName("data")
+    val hijos:DatosFiltroChildren
+)
+
+
 data class DatosFiltroChildren(
-    @SerializedName("link_flair_text") //==>Shitposting
+    //	"link_flair_text": "Shitposting",
+    @SerializedName("link_flair_text")
     val categoria1:String="",
+
+    //"post_hint": "image",
     @SerializedName("post_hint") // ==> image
     val categoria2:String="",
+
     @SerializedName("title")
     val titulo:String="",
     @SerializedName("thumbnail")

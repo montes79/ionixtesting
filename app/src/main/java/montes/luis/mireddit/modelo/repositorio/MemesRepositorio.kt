@@ -13,13 +13,15 @@ class MemesRepositorio @Inject constructor(
 
     suspend fun getListado100(numeroFiltro:Int): Response<RespuestaReddit> {
         val respuesta=api.getListadoMemesFiltro100(numeroFiltro)
-        proveedor.listaMemes= respuesta.body()?.datos?.hijos ?: mutableListOf()
+        val lista1=respuesta.body()?.datos?.datosHijos
+        proveedor.listaMemes= lista1?: mutableListOf()
         return respuesta
     }
 
     suspend fun getListadoBusqueda(cadenaBusqueda:String, numeroFiltro:Int): Response<RespuestaReddit> {
         val respuesta=api.getListadoMemesBusqueda(cadenaBusqueda,numeroFiltro)
-        proveedor.listaMemes= respuesta.body()?.datos?.hijos ?: mutableListOf()
+        val lista1=respuesta.body()?.datos?.datosHijos
+        proveedor.listaMemes= lista1?: mutableListOf()
         return respuesta
     }
 

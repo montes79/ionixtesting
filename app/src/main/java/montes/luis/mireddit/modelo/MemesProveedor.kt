@@ -6,7 +6,7 @@ import javax.inject.Singleton
 @Singleton
 class MemesProveedor @Inject constructor()  {
 
-    var listaMemes:MutableList<DatosFiltroChildren> = mutableListOf()
+    var listaMemes:MutableList<DatosChildren> = mutableListOf()
 
 }
 

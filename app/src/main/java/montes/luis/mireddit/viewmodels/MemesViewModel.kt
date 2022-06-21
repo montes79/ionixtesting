@@ -24,7 +24,7 @@ class MemesViewModel @Inject constructor(
         viewModelScope.launch {
             isLoading.postValue(true)
             val resultado = getCasoFiltro(cantidad)
-            if(!resultado.isSuccessful){
+            if(resultado.isSuccessful){
                 listaMemes.postValue(resultado)
                 isLoading.postValue(false)
             }
@@ -37,7 +37,7 @@ class MemesViewModel @Inject constructor(
           viewModelScope.launch {
               isLoading.postValue(true)
               val resultado = getCasoBusqueda(cadenaBusqueda, cantidad)
-              if(!resultado.isSuccessful) {
+              if(resultado.isSuccessful) {
                   listaMemes.postValue(resultado)
                   isLoading.postValue(false)
               }

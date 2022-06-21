@@ -22,10 +22,9 @@ class PrincipalActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val memesViewModel: MemesViewModel by viewModels()
-   // private lateinit var  memesViewModel:MemesViewModel
     private lateinit var adaptador: MemeAdaptador
     private var listaResultados:ArrayList<DatosFiltroChildren> = arrayListOf()
-    private var listaFiltrada100:MutableList<DatosFiltroChildren> = mutableListOf()
+    private var listaFiltrada100:MutableList<DatosFiltroChildren> = arrayListOf()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,12 +49,21 @@ class PrincipalActivity : AppCompatActivity() {
     private fun llamadaRecuperar100Registros(){
         memesViewModel.onInicializar(Constantes.limiteBusqueda)
 
-        memesViewModel.listaMemes.observe(this, Observer {
-            respuesta->
-            val listaFiltrada=respuesta.body()?.datos?.hijos?.filter { it.categoria1==Constantes.filtro_link_flair_text && it.categoria2==Constantes.filtro_post_hint }
+        memesViewModel.listaMemes.observe(this, Observer { respuesta->
 
-            listaFiltrada100= listaFiltrada?.toMutableList() ?: mutableListOf()
-            actualizarRecyclerView100Elementos( )
+            val listaChildren=respuesta.body()?.datos?.datosHijos
+            val listaFiltrada=listaChildren?.filter {datosHijo->
+                datosHijo.hijos.categoria1==Constantes.filtro_link_flair_text
+                        &&
+               datosHijo.hijos.categoria2==Constantes.filtro_post_hint
+            }
+
+
+            listaFiltrada?.forEach {datosFiltro->
+                listaFiltrada100.add(datosFiltro.hijos)
+            }
+
+            actualizarRecyclerView100Elementos()
 
         })
 
@@ -69,7 +77,7 @@ class PrincipalActivity : AppCompatActivity() {
     }
 
     private fun inicializarRecyclerView(){
-        crearListaDummy()
+       // crearListaDummy()
 
         adaptador= MemeAdaptador(listaResultados){
             onSeleccionarElemento( it )
