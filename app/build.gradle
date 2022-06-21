@@ -38,6 +38,8 @@ android {
 }
 
 dependencies {
+    def okhttp = "4.4.0"
+    def retrofitRX = '2.4.0'
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation "androidx.appcompat:appcompat:$versionAND"
@@ -56,6 +58,7 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitRX"
 
     //Corrutinas
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3'
@@ -68,6 +71,9 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$versionGlide"
    // annotationProcessor "com.github.bumptech.glide:compiler:$versionGlide"
     kapt "com.github.bumptech.glide:compiler:$versionGlide"
+
+    //OkHttp Interceptor
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
 
 
     testImplementation 'junit:junit:4.13.2'
