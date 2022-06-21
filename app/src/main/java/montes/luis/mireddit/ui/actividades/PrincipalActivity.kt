@@ -9,6 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import montes.luis.mireddit.app.Aplicacion
 
 import montes.luis.mireddit.databinding.ActivityMainBinding
 import montes.luis.mireddit.modelo.DatosFiltroChildren
@@ -21,6 +22,7 @@ class PrincipalActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val memesViewModel: MemesViewModel by viewModels()
+   // private lateinit var  memesViewModel:MemesViewModel
     private lateinit var adaptador: MemeAdaptador
     private var listaResultados:ArrayList<DatosFiltroChildren> = arrayListOf()
     private var listaFiltrada100:MutableList<DatosFiltroChildren> = mutableListOf()
@@ -29,6 +31,8 @@ class PrincipalActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
+        (application as Aplicacion).appComponent.inject(memesViewModel)
+
         setContentView(binding.root)
         inicializarRecyclerView()
         llamadaRecuperar100Registros()
@@ -44,7 +48,6 @@ class PrincipalActivity : AppCompatActivity() {
 
 
     private fun llamadaRecuperar100Registros(){
-
         memesViewModel.onInicializar(Constantes.limiteBusqueda)
 
         memesViewModel.listaMemes.observe(this, Observer {

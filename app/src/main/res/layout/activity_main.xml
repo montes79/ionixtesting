@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/viewContainer"
     android:orientation="vertical"
-    android:background="@color/material_dynamic_neutral95"
+    android:background="@color/teal_700"
     tools:context=".ui.actividades.PrincipalActivity">
 
     <ProgressBar

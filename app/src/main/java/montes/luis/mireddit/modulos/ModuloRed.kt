@@ -13,7 +13,8 @@ import javax.inject.Singleton
 
 @Module //Modulos proveen dependencias que no se pueden inyectar con @Inject
 @InstallIn(SingletonComponent::class) //Alcance a nivel de activity..
-object ModuloRed {
+//object
+class ModuloRed {
 
     @Singleton  //Sin singleton se va crear una instancia nueva..Patron de diseño: Unica instancia
     @Provides
